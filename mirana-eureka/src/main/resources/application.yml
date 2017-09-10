@@ -5,6 +5,7 @@ eureka:
   instance:
     hostname: localhost
   client:
+    # 以下两项一定要是false，表明自己是服务器，而不需要从其他主机发现服务
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:

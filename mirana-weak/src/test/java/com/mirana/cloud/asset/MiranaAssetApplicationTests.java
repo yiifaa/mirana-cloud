@@ -17,8 +17,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import com.mirana.cloud.asset.domain.Asset;
-import com.mirana.cloud.asset.service.AssetService;
+import com.mirana.cloud.asset.service.WeakService;
+import com.mirana.cloud.weak.Constants;
+import com.mirana.cloud.weak.domain.Asset;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 
@@ -27,7 +28,7 @@ import com.netflix.discovery.EurekaClient;
 public class MiranaAssetApplicationTests {
 	
 	@Resource
-	private AssetService assetService;
+	private WeakService assetService;
 	
 	@Resource
 	private EurekaClient discoveryClient;

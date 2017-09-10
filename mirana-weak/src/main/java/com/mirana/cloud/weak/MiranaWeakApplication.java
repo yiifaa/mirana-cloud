@@ -1,4 +1,4 @@
-package com.mirana.cloud.asset;
+package com.mirana.cloud.weak;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 @EnableEurekaClient
 @SpringBootApplication
 @Import({ServiceConfigs.class, MvcConfigs.class})
-public class MiranaAssetApplication extends SpringBootServletInitializer {
+public class MiranaWeakApplication extends SpringBootServletInitializer {
 	
 	/**
 	 * 添加自身的配置信息
@@ -19,11 +19,11 @@ public class MiranaAssetApplication extends SpringBootServletInitializer {
 	 */
     @Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        	return application.sources(MiranaAssetApplication.class);
+        	return application.sources(MiranaWeakApplication.class);
 	}
 
     public static void main(String[] args) {
-    	SpringApplication.run(MiranaAssetApplication.class, args);
+    	SpringApplication.run(MiranaWeakApplication.class, args);
     }
     
 }
