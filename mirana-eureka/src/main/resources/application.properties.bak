@@ -1,0 +1,16 @@
+spring.application.name=EurekaServer
+server.port=8761
+# \u4E3B\u673A\u540D\u79F0
+eureka.instance.hostname=localhost
+# Eureka server time to sync with other peers, 
+# usually it's 3 min and it will retry if it doesnt
+# get any response but for developpement we will put it to 0
+eureka.numberRegistrySyncRetries=0
+
+# the Eureka server has the same host as ours 
+# so we do this to stop the server from registring as it's own peer
+eureka.client.service-url.default-zone=http://${eureka.instance.hostname}:${server.port}/eureka/
+# To stop it from trying to register to an Eureka Server
+eureka.client.register-with-eureka=false
+# To stop fetching registry information about other services from other peers
+eureka.client.fetch-registry=false

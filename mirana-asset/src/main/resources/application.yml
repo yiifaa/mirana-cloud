@@ -1,0 +1,21 @@
+management:
+  context-path: /admin
+  
+server:
+  port: 8081
+  
+eureka:
+  instance:
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+  client:
+     healthcheck:
+      enabled: false
+  serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      
+spring:
+  application:
+    name: weak
+
+  
