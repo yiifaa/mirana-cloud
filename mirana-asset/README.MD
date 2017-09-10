@@ -6,7 +6,7 @@ mirana-asset
 承担Eureka的客户端角色，向Eureka服务器发现注册与发现服务。
 
 ## 2. 发现服务
-通过com.netflix.discovery.EurekaClient来从
+通过com.netflix.discovery.EurekaClient来从发现服务，通过org.springframework.web.client.RestTemplate来利用HTTP服务，请参见com.mirana.cloud.weak.service.impl.WeakServiceImpl类。
 
 ## 3. 说明
 1. 必须要首先启动Euraka服务器，即mirana-eureka项目；
