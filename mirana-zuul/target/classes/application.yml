@@ -10,11 +10,18 @@ zuul:
       path: /asset/**
       serviceId: ASSET
       stripPrefix: false
+    users:
+      path: /users/**
+      url: http://localhost:8081/asset
       
 ribbon:
     readTimeout: 5000
     hystrixTimeout: 4500
     execTime: 4000
+
+users:
+  ribbon:
+    listOfServers: localhost
           
 endpoints:
   restart:
@@ -25,9 +32,9 @@ endpoints:
     sensitive: false
      
 eureka:
-  # instance:
-  #   metadata-map:
-  #   zone: ASSET
+  #instance:
+     #metadata-map:
+      #zone: '@zone'
   client:
     fetch-registry: true
     service-url:
