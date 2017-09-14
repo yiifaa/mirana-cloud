@@ -8,22 +8,30 @@ zuul:
   routes:
     asset:
       path: /asset/**
-      url: http://localhost:8081/asset
-      #serviceId: ASSET
-      #stripPrefix: true
-
-asset:
-  ribbon:
-    listOfServers: localhost
-
-ribbon:
-  eureka:
-    enabled: false
+      serviceId: ASSET
+      stripPrefix: false
       
-#eureka:
-#  client:
-#    serviceUrl:
-#        defaultZone: http://localhost:8761/eureka/
+ribbon:
+    readTimeout: 5000
+    hystrixTimeout: 4500
+    execTime: 4000
+          
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+     
+eureka:
+  # instance:
+  #   metadata-map:
+  #   zone: ASSET
+  client:
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
  
 # 设置服务名称  
 spring:
