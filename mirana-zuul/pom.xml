@@ -1,22 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<artifactId>mirana-asset</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>mirana-cloud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>mirana-asset</name>
-	<description>资产管理，微服务提供者，也是eureka客户端</description>
+	<name>mirana-zuul</name>
+	<description>Zuul Server，微服务负载均衡服务器</description>
 
 	<parent>
 		<groupId>com.mirana.cloud</groupId>
 		<artifactId>mirana-cloud</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+
+
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zuul</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
@@ -33,7 +40,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
 		<plugins>
 			<plugin>
