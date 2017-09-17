@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.mirana.cloud.asset.domain.Asset;
 
+import rx.Observable;
+
 /**
  * @author 甘焕
  *
@@ -16,7 +18,11 @@ import com.mirana.cloud.asset.domain.Asset;
  */
 public interface AssetService {
 	
+	public Observable<Asset> findByIds(final Long id);
+	
 	List<Asset> findAll();
+	
+	List<Asset> findAllDefault();
 	
 	Asset findById(Long id);
 

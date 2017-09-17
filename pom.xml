@@ -23,10 +23,10 @@
 	</properties>
 
 	<modules>
+	    <module>mirana-zuul</module>
 		<module>mirana-weak</module>
 		<module>mirana-eureka</module>
-		<module>mirana-asset</module>
-    	<module>mirana-zuul</module>
+		<module>mirana-asset</module>    	
   </modules>
 
 	<dependencyManagement>

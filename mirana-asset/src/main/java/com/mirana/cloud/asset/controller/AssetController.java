@@ -14,6 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mirana.cloud.asset.domain.Asset;
 import com.mirana.cloud.asset.service.AssetService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+import rx.Completable;
+import rx.Observable;
+import rx.Single;
+import rx.Subscriber;
+import rx.functions.Func1;
 
 /**
  * @author 甘焕
@@ -46,4 +53,11 @@ public class AssetController {
 		return this.assetService.findById(id);
 	}
 	
+	@RequestMapping(value="/slow/{id}", method=RequestMethod.GET)
+	public Asset findById(@PathVariable("id") Long id) {
+		//	Completable asset = ;
+		//	return asset.toObservable()		
+		//return this.assetService.findById(id);
+		return this.assetService.findByIds(id).toBlocking().single();
+	}
 }

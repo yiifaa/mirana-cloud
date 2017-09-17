@@ -15,6 +15,25 @@ public class Asset {
 	private Long id;
 	
 	private String name;
+	
+	
+
+	/**
+	 * 
+	 */
+	public Asset() {
+		super();
+	}
+
+	/**
+	 * @param id
+	 * @param name
+	 */
+	public Asset(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	/**
 	 * @return the id
