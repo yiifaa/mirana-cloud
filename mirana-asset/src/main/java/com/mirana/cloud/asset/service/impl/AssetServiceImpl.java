@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 import com.google.common.collect.ImmutableMap;
 import com.mirana.cloud.asset.domain.Asset;
 import com.mirana.cloud.asset.service.AssetService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.ObservableExecutionMode;
+import com.netflix.hystrix.contrib.javanica.command.ExecutionType;
+
+import rx.Observable;
+import rx.Subscriber;
 
 /**
  * @author 甘焕
@@ -42,9 +48,35 @@ public class AssetServiceImpl implements AssetService {
 	 * @see com.mirana.cloud.asset.service.AssetService#findAll()
 	 */
 	@Override
+	@HystrixCommand(fallbackMethod = "findAllDefault")
 	public List<Asset> findAll() {
-		return assets.values().asList();
+		//throw new RuntimeException("内部错误");
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
+	
+	@HystrixCommand(observableExecutionMode=ObservableExecutionMode.LAZY)
+    public Observable<Asset> findByIds(final Long id) {
+        return Observable.create(new Observable.OnSubscribe<Asset>() {
+                @Override
+                public void call(Subscriber<? super Asset> observer) {
+                    try {
+                        if (!observer.isUnsubscribed()) {
+                        	Thread.sleep(3000);
+                            observer.onNext(new Asset(100L, "reactive"));
+                            observer.onCompleted();
+                        }
+                    } catch (Exception e) {
+                        observer.onError(e);
+                    }
+                }
+            });
+    }
 
 	/* (non-Javadoc)
 	 * @see com.mirana.cloud.asset.service.AssetService#findById(java.lang.Long)
@@ -52,6 +84,14 @@ public class AssetServiceImpl implements AssetService {
 	@Override
 	public Asset findById(Long id) {
 		return assets.get(id);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.mirana.cloud.asset.service.AssetService#findAllDefault()
+	 */
+	@Override
+	public List<Asset> findAllDefault() {
+		return assets.values().asList();
 	}
 
 }
